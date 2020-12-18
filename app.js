@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
 
     socket.on('send', (data) => {
       var rec_socket = home_servers[data.to]
-      if (typeof variable === 'undefined') {
+      if (typeof rec_socket === 'undefined') {
         socket.emit('client_not_connected');
       }
       else {
