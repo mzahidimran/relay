@@ -4,7 +4,7 @@ var io = require('socket.io')(http);
 
 var home_servers = {};
 io.on('connection', (socket) => {
-    
+    console.log('client connected')
     socket.on('disconnect', () => {
         console.log('a user disconnected');
     });
@@ -17,9 +17,11 @@ io.on('connection', (socket) => {
       else {
         rec_socket.emit('message', data.data);
       }
+      console.log('send' + data)
     });
     socket.on('user', (data) => {
       home_servers[data.id] = socket
+      console.log('user' + data)
     });
 
 
